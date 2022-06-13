@@ -7,7 +7,7 @@ type Query {
   price:Float,
   isAdmin:Boolean,
   roles:[String!]!
-  products:[Product!]!
+  products(filter:productFilter):[Product!]!
   product(id:ID!):Product 
   categories:[Category!]!
   category(id:ID):Category
@@ -21,11 +21,24 @@ type Product {
   price: Float!
   onSale:Boolean
   category:Category
+  reviews:[Review!]!
 }
 
 type Category {
   id:ID!
   name:String!
-  products:[Product!]!
+  products(filter:productFilter):[Product!]!
 }
+
+type Review {
+  id:ID!
+  date:String!
+  title:String
+  comment:String
+  rating:Int
+}
+input productFilter {
+  onSale:Boolean!
+}
+
 `
