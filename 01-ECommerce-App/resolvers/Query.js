@@ -13,13 +13,20 @@ exports.Query = {
   roles: () => {
     return ["some", "data", "null"]
   },
-  products: (_,{filter,...rest},{products}) => {
+  products: (_,{filter,...rest},{products,reviews}) => {
     let filteredPro = products
-    console.log({rest})
-    if(rest.All) return products
+
     if(filter){
-      const {onSale} = filter
-      return filteredPro.filter(elem=>elem.onSale===onSale)
+      const {onSale,avrRating} = filter
+      filteredPro = filteredPro.filter(elem=>elem.onSale===onSale)
+      if(avrRating){
+
+        return filteredPro.filter(prod=>{
+          const rev = reviews.find(elem=>elem.productId===prod.id)
+          if (Math.round(rev.rating)===avrRating) return true
+        })
+      }
+      return filteredPro
     }
     return filteredPro
   },

@@ -39,6 +39,7 @@ type Review {
 }
 input productFilter {
   onSale:Boolean!
+  avrRating:Int
 }
 
 `
