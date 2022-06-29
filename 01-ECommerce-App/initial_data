@@ -1,4 +1,4 @@
-const products = [
+const products =  [
   {
     id: "53a0724c-a416-4cac-ae45-bfaedce1f147",
     name: "Steel Pot",
