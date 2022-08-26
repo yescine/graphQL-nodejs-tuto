@@ -15,7 +15,10 @@ type Query {
 
 type Mutation {
   addCategory(input:AddCategoryInput!): Category!
-  addCategory(input:AddProductInput!): Product!
+  addProduct(input:AddProductInput!): Product!
+  deleteCategory(id:ID!):Boolean!
+  updateCategory(id:ID!,input:UpdateCategoryInput):Boolean!
+
 }
 
 type Product {
@@ -59,6 +62,10 @@ input AddProductInput {
   onSale:Boolean
   price: Float
   quantity: Int
+}
+
+input UpdateCategoryInput {
+  name:String!
 }
 
 `

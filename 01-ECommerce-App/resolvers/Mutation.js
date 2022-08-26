@@ -18,5 +18,9 @@ exports.Mutation = {
 
     ctx.products.push(newCategory)
     return newCategory
+  },
+  deleteCategory:(parent,{id},{categories})=>{
+    categories = categories.filter(cat=>cat.id!==id)
+    return true
   }
 }
