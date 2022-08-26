@@ -13,6 +13,11 @@ type Query {
   category(id:ID):Category
 }
 
+type Mutation {
+  addCategory(input:AddCategoryInput!): Category!
+  addCategory(input:AddProductInput!): Product!
+}
+
 type Product {
   id:String!
   name: String!
@@ -40,6 +45,20 @@ type Review {
 input productFilter {
   onSale:Boolean!
   avrRating:Int
+}
+
+input AddCategoryInput {
+  name:String!
+}
+
+input AddProductInput {
+  name:String
+  image:String
+  description:String
+  categoryId:String
+  onSale:Boolean
+  price: Float
+  quantity: Int
 }
 
 `
