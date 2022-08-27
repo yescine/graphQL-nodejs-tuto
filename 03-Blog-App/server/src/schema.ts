@@ -4,10 +4,19 @@ export const typeDefs = gql`
 
   type Query {
     hello: String
+    posts:[Post!]!
   }
 
   type Mutation {
-    postCreate(title:String!,content:String):PostPayload
+    postCreate(input:PostInp):PostPayload
+    postUpdate(input:PostInp,postId:String):PostPayload
+    postDelete(postId:String):PostPayload
+
+  }
+
+  input PostInp {
+    title:String!
+    content:String!
   }
 
   type UserError {
