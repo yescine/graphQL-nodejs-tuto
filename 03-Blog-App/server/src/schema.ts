@@ -11,12 +11,19 @@ export const typeDefs = gql`
     postCreate(input:PostInp):PostPayload
     postUpdate(input:PostInp,postId:String):PostPayload
     postDelete(postId:String):PostPayload
+    signup(user:UserInp):Boolean!
 
   }
 
   input PostInp {
     title:String!
     content:String!
+  }
+
+  input UserInp {
+    name: String!
+    email: String!
+    profile: Profile!
   }
 
   type UserError {
