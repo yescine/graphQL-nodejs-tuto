@@ -4,7 +4,7 @@ import { Prisma, PrismaClient, User as User_db } from "@prisma/client";
 import { typeDefs } from "./schema";
 import { Query,Mutation,Profile,Post,User } from "./resolvers";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 export interface Context {
   prisma: PrismaClient<
