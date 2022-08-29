@@ -1,8 +1,8 @@
 import { ApolloServer } from "apollo-server";
-import { Prisma, PrismaClient, User } from "@prisma/client";
+import { Prisma, PrismaClient, User as User_db } from "@prisma/client";
 
 import { typeDefs } from "./schema";
-import { Query,Mutation,Profile } from "./resolvers";
+import { Query,Mutation,Profile,Post,User } from "./resolvers";
 
 const prisma = new PrismaClient();
 
@@ -12,7 +12,7 @@ export interface Context {
     never,
     Prisma.RejectOnNotFound | Prisma.RejectPerOperation | undefined
   >;
-  userInfo:User
+  userInfo:User_db
 }
 
 const server = new ApolloServer({
@@ -20,7 +20,9 @@ const server = new ApolloServer({
   resolvers: {
     Query,
     Mutation,
-    Profile
+    Profile,
+    Post,
+    User
   },
   context:({req})=>{
     return {

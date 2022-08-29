@@ -25,7 +25,7 @@ export const typeDefs = gql`
   input UserInp {
     name: String!
     email: String!
-    profile: Profile!
+    bio: String!
   }
 
   type UserError {
